@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provision Plumbing LLC | Gulf Shores, AL | Call (251) 709-7180</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0a1628;--steel:#1c2e4a;--mid:#243650;
+  --teal:#0e8a7a;--teal-lt:#12b5a0;--teal-dim:#0a6b5e;
+  --cream:#f0ede8;--warm:#c8c3bc;--muted:#7a8fa8;
+  --white:#fff;--gold:#e8a020;--red:#d63333;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden;padding-bottom:80px;}
+
+/* ── PIPE GRID BG ── */
+.pipe-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;}
+.pipe-bg svg{width:100%;height:100%;}
+
+/* ── STICKY MOBILE CALL BAR ── */
+.call-bar{position:fixed;bottom:0;left:0;right:0;z-index:900;background:var(--teal);display:flex;align-items:stretch;height:64px;transform:translateY(100%);transition:transform .4s ease;box-shadow:0 -4px 20px rgba(0,0,0,.35);}
+.call-bar.visible{transform:translateY(0);}
+.call-bar-phone{flex:1;display:flex;align-items:center;justify-content:center;gap:.6rem;text-decoration:none;color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:.04em;}
+.call-bar-phone svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
+.call-bar-quote{width:120px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;cursor:pointer;border:none;font-family:'Inter',sans-serif;}
+.call-bar-quote:hover{background:#d4901a;}
+@media(min-width:769px){.call-bar{display:none;}}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(10,22,40,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(14,138,122,.18);}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.logo-badge{width:38px;height:38px;background:var(--teal);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:#fff;flex-shrink:0;}
+.logo-text{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.1em;color:var(--white);line-height:1.1;}
+.logo-sub{font-size:.58rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--teal-lt);}
+.nav-right{display:flex;align-items:center;gap:1rem;}
+.nav-phone{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:var(--teal-lt);text-decoration:none;transition:color .2s;}
+.nav-phone:hover{color:#fff;}
+.nav-cta{background:var(--red);color:#fff;border:none;cursor:pointer;padding:.55rem 1.2rem;border-radius:3px;font-size:.78rem;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:all .2s;white-space:nowrap;}
+.nav-cta:hover{background:#b82b2b;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,22,40,.98);border-bottom:1px solid rgba(14,138,122,.18);padding:1.5rem 2rem;flex-direction:column;gap:1.2rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{text-decoration:none;font-size:.9rem;color:var(--cream);letter-spacing:.08em;text-transform:uppercase;font-weight:500;}
+.mob-phone{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em;color:var(--teal-lt);text-decoration:none;}
+.mob-cta{background:var(--red);color:#fff;border:none;cursor:pointer;padding:.75rem 1.5rem;border-radius:3px;font-size:.85rem;font-family:'Inter',sans-serif;font-weight:700;text-transform:uppercase;align-self:flex-start;margin-top:.3rem;}
+
+/* ── URGENCY STRIP ── */
+.urgency-strip{position:relative;z-index:1;background:var(--red);padding:.55rem 2rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.urgency-strip span{font-size:.78rem;color:rgba(255,255,255,.9);letter-spacing:.05em;}
+.urgency-strip strong{color:#fff;}
+.up{background:rgba(255,255,255,.18);border-radius:2px;padding:.18rem .65rem;font-size:.7rem;color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.1em;}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;padding:5rem 3rem 4rem;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,1) 40%,rgba(14,138,122,.07) 100%);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:start;max-width:1200px;margin:0 auto;}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(14,138,122,.35);border-radius:2px;padding:.28rem .8rem;font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-lt);font-weight:700;margin-bottom:1.5rem;opacity:0;animation:fadeIn .6s .1s ease forwards;}
+.hero-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,11vw,9rem);line-height:.85;color:transparent;-webkit-text-stroke:1px rgba(14,138,122,.18);display:block;margin-bottom:-.1em;opacity:0;animation:fadeIn .6s .15s ease forwards;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5.5vw,4.8rem);line-height:1;letter-spacing:.04em;color:var(--white);margin-bottom:.35em;opacity:0;animation:fadeIn .6s .2s ease forwards;}
+.hero-title span{color:var(--teal-lt);}
+
+/* pain points */
+.pain-points{display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;opacity:0;animation:fadeIn .6s .25s ease forwards;}
+.pain-item{display:flex;align-items:center;gap:.75rem;font-size:.95rem;color:var(--cream);}
+.pain-icon{width:28px;height:28px;background:rgba(14,138,122,.18);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.pain-arrow{font-size:.7rem;color:var(--teal-lt);font-weight:700;margin-left:auto;white-space:nowrap;letter-spacing:.05em;}
+
+/* trust row */
+.trust-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;opacity:0;animation:fadeIn .6s .3s ease forwards;}
+.trust-item{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted);}
+.trust-item strong{color:var(--cream);}
+.trust-dot{width:3px;height:3px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+
+/* response promise */
+.response-promise{background:rgba(14,138,122,.1);border:1px solid rgba(14,138,122,.25);border-radius:4px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.9rem;margin-bottom:2rem;opacity:0;animation:fadeIn .6s .35s ease forwards;}
+.rp-icon{font-size:1.4rem;flex-shrink:0;}
+.rp-text strong{display:block;font-size:.88rem;color:var(--white);font-weight:700;margin-bottom:.15rem;}
+.rp-text span{font-size:.78rem;color:var(--muted);font-weight:300;}
+
+.hero-phone{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeIn .6s .4s ease forwards;}
+.phone-link{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;color:var(--white);text-decoration:none;transition:color .2s;line-height:1;}
+.phone-link:hover{color:var(--teal-lt);}
+.phone-sub{font-size:.75rem;color:var(--muted);font-weight:300;line-height:1.5;}
+
+/* ── LEAD FORM CARD ── */
+.lead-card{background:var(--white);border-radius:8px;padding:2.2rem;position:relative;overflow:hidden;opacity:0;animation:fadeIn .6s .3s ease forwards;}
+.lead-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--red);}
+.lead-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.07em;color:#0a1628;margin-bottom:.2rem;}
+.lead-card .lead-sub{font-size:.8rem;color:#5a6a7a;margin-bottom:1.5rem;font-weight:400;}
+.lead-card .lead-sub strong{color:var(--teal-dim);font-weight:700;}
+.lfgroup{margin-bottom:.9rem;}
+.lfgroup label{display:block;font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:#5a6a7a;font-weight:700;margin-bottom:.38rem;}
+.lfgroup input,.lfgroup select{width:100%;padding:.75rem 1rem;background:#f8f7f5;border:1.5px solid #ddd;border-radius:4px;font-family:'Inter',sans-serif;font-size:.9rem;color:#0a1628;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.lfgroup input:focus,.lfgroup select:focus{border-color:var(--teal);}
+.lfgroup input::placeholder{color:#9aabb8;font-weight:300;}
+.lfgroup select{color:#0a1628;}
+.lfgroup select option{color:#0a1628;background:#fff;}
+.lead-submit{width:100%;background:var(--red);color:#fff;border:none;cursor:pointer;padding:1rem;border-radius:4px;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;margin-top:.4rem;}
+.lead-submit:hover{background:#b82b2b;transform:translateY(-1px);box-shadow:0 6px 20px rgba(214,51,51,.3);}
+.lead-form-note{font-size:.7rem;color:#9aabb8;text-align:center;margin-top:.7rem;}
+.lead-or{text-align:center;margin:.9rem 0 .6rem;font-size:.75rem;color:#9aabb8;position:relative;}
+.lead-or::before,.lead-or::after{content:'';position:absolute;top:50%;width:38%;height:1px;background:#e5e5e5;}
+.lead-or::before{left:0;}
+.lead-or::after{right:0;}
+.lead-call-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;background:var(--teal);color:#fff;text-decoration:none;padding:.85rem;border-radius:4px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;transition:all .2s;}
+.lead-call-btn:hover{background:var(--teal-lt);}
+.lead-call-btn svg{width:18px;height:18px;fill:#fff;flex-shrink:0;}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SOCIAL PROOF STRIP ── */
+.proof-strip{position:relative;z-index:1;background:var(--steel);border-top:1px solid rgba(14,138,122,.1);border-bottom:1px solid rgba(14,138,122,.1);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;}
+.proof-item{display:flex;align-items:center;gap:.6rem;}
+.proof-stars{color:var(--gold);font-size:.85rem;letter-spacing:1.5px;}
+.proof-text{font-size:.82rem;color:var(--muted);}
+.proof-text strong{color:var(--cream);}
+.proof-divider{width:1px;height:30px;background:rgba(14,138,122,.18);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── REVIEWS (early placement) ── */
+.reviews{position:relative;z-index:1;padding:5rem 3rem;background:var(--navy);}
+.section-header{text-align:center;margin-bottom:3rem;}
+.eyebrow{font-size:.67rem;text-transform:uppercase;letter-spacing:.2em;color:var(--teal-lt);font-weight:700;display:block;margin-bottom:.7rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:.06em;color:var(--white);line-height:1.05;}
+.section-title span{color:var(--teal-lt);}
+.section-sub{font-size:.9rem;color:var(--muted);margin-top:.7rem;font-weight:300;line-height:1.7;}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1200px;margin:0 auto;}
+.review-card{background:var(--steel);border:1px solid rgba(14,138,122,.1);border-radius:6px;padding:1.8rem;transition:border-color .25s;}
+.review-card:hover{border-color:rgba(14,138,122,.3);}
+.rv-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.9rem;}
+.rv-info{display:flex;align-items:center;gap:.65rem;}
+.rv-av{width:36px;height:36px;border-radius:50%;background:var(--teal-dim);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#fff;flex-shrink:0;font-family:'Bebas Neue',sans-serif;letter-spacing:.04em;}
+.rv-name{font-size:.87rem;font-weight:600;color:var(--white);}
+.rv-src{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;}
+.rv-stars{color:var(--gold);font-size:.78rem;letter-spacing:1px;}
+.rv-text{font-size:.86rem;color:var(--muted);line-height:1.78;font-style:italic;font-weight:300;}
+.rv-badge{display:inline-block;margin-top:.8rem;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-lt);font-weight:700;border:1px solid rgba(14,138,122,.25);padding:.16rem .5rem;border-radius:2px;}
+
+/* ── SERVICES ── */
+.services{position:relative;z-index:1;padding:5rem 3rem;background:var(--steel);}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(14,138,122,.08);border:1px solid rgba(14,138,122,.1);border-radius:6px;overflow:hidden;max-width:1100px;margin:0 auto;}
+.pain-card{background:var(--navy);padding:1.8rem;transition:all .25s;position:relative;overflow:hidden;}
+.pain-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--teal);transition:height .3s;}
+.pain-card:hover::before{height:100%;}
+.pain-card:hover{background:rgba(28,46,74,.8);}
+.pc-problem{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);font-weight:700;margin-bottom:.4rem;}
+.pc-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:var(--white);margin-bottom:.45rem;}
+.pc-solution{font-size:.81rem;color:var(--muted);line-height:1.62;font-weight:300;}
+
+/* ── ABOUT ── */
+.about{position:relative;z-index:1;padding:5rem 3rem;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1200px;margin:0 auto;align-items:center;}
+.about-text .eyebrow{text-align:left;}
+.about-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3.5vw,3rem);letter-spacing:.05em;color:var(--white);margin-bottom:1rem;line-height:1.05;}
+.about-text h2 span{color:var(--teal-lt);}
+.about-text p{font-size:.9rem;color:var(--muted);line-height:1.88;margin-bottom:.9rem;font-weight:300;}
+.aline{width:44px;height:2px;background:var(--teal);margin:1.2rem 0;}
+.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.5rem;}
+.fact-box{background:var(--steel);border:1px solid rgba(14,138,122,.14);border-radius:4px;padding:1rem;}
+.fact-num{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--teal-lt);letter-spacing:.04em;line-height:1;}
+.fact-desc{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.25rem;}
+.owner-card{background:var(--steel);border:1px solid rgba(14,138,122,.14);border-radius:8px;padding:2.2rem;position:relative;overflow:hidden;}
+.owner-card::after{content:'84';position:absolute;bottom:-1.5rem;right:-.5rem;font-family:'Bebas Neue',sans-serif;font-size:9rem;color:rgba(14,138,122,.05);line-height:1;pointer-events:none;}
+.owner-name{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.06em;color:var(--white);margin-bottom:.15rem;}
+.owner-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:var(--teal-lt);font-weight:700;margin-bottom:1.1rem;}
+.owner-quote{font-family:'DM Serif Display',serif;font-style:italic;font-size:1rem;color:var(--warm);line-height:1.75;border-left:3px solid var(--teal);padding-left:1.1rem;margin-bottom:1.2rem;}
+.owner-detail{font-size:.83rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.owner-bottom{display:flex;align-items:center;gap:.55rem;margin-top:1.2rem;padding-top:1.1rem;border-top:1px solid rgba(14,138,122,.12);}
+.stars{color:var(--gold);font-size:.85rem;letter-spacing:1.5px;}
+.stars-note{font-size:.73rem;color:var(--muted);margin-left:.3rem;}
+
+/* ── INLINE CTA (mid-page) ── */
+.inline-cta{position:relative;z-index:1;background:var(--teal-dim);padding:3.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.inline-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none;}
+.ict-left h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2.5rem);letter-spacing:.05em;color:#fff;margin-bottom:.3rem;}
+.ict-left p{font-size:.88rem;color:rgba(255,255,255,.6);font-weight:300;}
+.ict-right{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;flex-shrink:0;}
+.ict-phone{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;color:#fff;text-decoration:none;transition:color .2s;}
+.ict-phone:hover{color:rgba(255,255,255,.75);}
+.ict-btn{background:#fff;color:var(--teal-dim);border:none;cursor:pointer;padding:.75rem 1.6rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:all .2s;white-space:nowrap;}
+.ict-btn:hover{background:var(--cream);transform:translateY(-1px);}
+
+/* ── CONTACT ── */
+.contact-section{position:relative;z-index:1;padding:5rem 3rem;background:var(--steel);}
+.contact-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start;}
+.contact-info h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,3.5vw,3rem);letter-spacing:.05em;color:var(--white);margin-bottom:.8rem;}
+.contact-info h2 span{color:var(--teal-lt);}
+.contact-info p{font-size:.9rem;color:var(--muted);line-height:1.82;font-weight:300;margin-bottom:1.8rem;}
+.irow{display:flex;align-items:flex-start;gap:.85rem;margin-bottom:1rem;}
+.iico{width:34px;height:34px;background:rgba(14,138,122,.1);border:1px solid rgba(14,138,122,.18);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.ilbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.13em;color:var(--teal-lt);font-weight:700;margin-bottom:.18rem;}
+.ival{font-size:.88rem;color:var(--cream);line-height:1.5;}
+.ival a{color:var(--cream);text-decoration:none;}
+.ival a:hover{color:var(--teal-lt);}
+.hour-row{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);padding:.2rem 0;border-bottom:1px solid rgba(14,138,122,.07);}
+.hour-row strong{color:var(--cream);font-weight:500;}
+.contact-form-box{background:var(--navy);border:1px solid rgba(14,138,122,.15);border-radius:8px;padding:2.2rem;position:relative;}
+.contact-form-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);border-radius:8px 8px 0 0;}
+.contact-form-box h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.07em;color:var(--white);margin-bottom:.25rem;}
+.cf-sub{font-size:.78rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300;}
+.cfgroup{margin-bottom:.9rem;}
+.cfgroup label{display:block;font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--teal-lt);font-weight:700;margin-bottom:.38rem;}
+.cfgroup input,.cfgroup select,.cfgroup textarea{width:100%;padding:.72rem 1rem;background:rgba(10,22,40,.55);border:1px solid rgba(14,138,122,.18);border-radius:3px;font-family:'Inter',sans-serif;font-size:.87rem;color:var(--cream);outline:none;transition:border-color .2s;resize:vertical;-webkit-appearance:none;}
+.cfgroup input:focus,.cfgroup select:focus,.cfgroup textarea:focus{border-color:var(--teal-lt);}
+.cfgroup input::placeholder,.cfgroup textarea::placeholder{color:var(--muted);font-weight:300;}
+.cfgroup select option{background:var(--steel);}
+.cfrow2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.cf-submit{width:100%;background:var(--teal);color:#fff;border:none;cursor:pointer;padding:.92rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:all .2s;margin-top:.4rem;}
+.cf-submit:hover{background:var(--teal-lt);transform:translateY(-1px);}
+.cf-note{font-size:.68rem;color:var(--muted);text-align:center;margin-top:.65rem;font-weight:300;}
+
+/* ── FOOTER CTA ── */
+.footer-cta{position:relative;z-index:1;background:var(--navy);padding:4rem 3rem;text-align:center;border-top:1px solid rgba(14,138,122,.1);}
+.footer-cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3.5rem);letter-spacing:.06em;color:#fff;margin-bottom:.6rem;}
+.footer-cta h2 span{color:var(--teal-lt);}
+.footer-cta p{font-size:.95rem;color:var(--muted);margin-bottom:1.5rem;font-weight:300;}
+.footer-cta-phone{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,4rem);letter-spacing:.05em;color:#fff;text-decoration:none;display:block;margin-bottom:2rem;transition:color .2s;}
+.footer-cta-phone:hover{color:var(--teal-lt);}
+
+footer{position:relative;z-index:1;background:#060f1c;padding:2.5rem 3rem;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:2rem;border-top:1px solid rgba(14,138,122,.08);}
+.footer-brand{font-family:'Bebas Neue',sans-serif;color:var(--white);font-size:1.1rem;letter-spacing:.1em;}
+.footer-brand small{display:block;font-family:'Inter',sans-serif;font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:400;margin-top:.2rem;}
+.footer-center{text-align:center;color:var(--muted);font-size:.72rem;line-height:1.8;}
+.footer-right{text-align:right;color:var(--muted);font-size:.76rem;line-height:1.9;}
+.footer-right a{color:var(--teal-lt);text-decoration:none;}
+
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--teal);color:#fff;padding:.8rem 1.8rem;border-radius:3px;font-size:.82rem;font-weight:700;z-index:9999;transition:transform .35s;pointer-events:none;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+@media(min-width:769px){.toast{bottom:2rem;}}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.2rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .nav-right .nav-cta{display:none;}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;}
+  .lead-card{order:-1;}
+  .about{grid-template-columns:1fr;gap:3rem;padding:5rem 1.5rem;}
+  .contact-inner{grid-template-columns:1fr;gap:3rem;}
+  footer{grid-template-columns:1fr;gap:1rem;}
+  .footer-center,.footer-right{text-align:left;}
+  .inline-cta{flex-direction:column;align-items:flex-start;padding:3rem 1.5rem;}
+  .proof-strip{gap:1.5rem;}
+  .proof-divider{display:none;}
+}
+@media(max-width:768px){
+  .hero{padding:4rem 1.5rem 3rem;}
+  .reviews,.services,.contact-section,.footer-cta{padding:4rem 1.5rem;}
+  .cfrow2{grid-template-columns:1fr;}
+  footer{padding:2rem 1.5rem;}
+}
+@media(max-width:500px){
+  .reviews-grid,.pain-grid,.fact-grid{grid-template-columns:1fr;}
+  .trust-row{gap:.8rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY CALL BAR (mobile only) -->
+<div class="call-bar" id="callBar">
+  <a class="call-bar-phone" href="tel:2517097180">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+    Call James Now — (251) 709-7180
+  </a>
+  <button class="call-bar-quote" id="callBarQuote">Free Quote</button>
+</div>
+
+<!-- PIPE BG -->
+<div class="pipe-bg">
+  <svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs><pattern id="pipes" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="10" x2="20" y2="10" stroke="#0e8a7a" stroke-width=".4"/>
+      <line x1="10" y1="0" x2="10" y2="20" stroke="#0e8a7a" stroke-width=".4"/>
+      <circle cx="10" cy="10" r="1.1" fill="none" stroke="#0e8a7a" stroke-width=".35"/>
+    </pattern></defs>
+    <rect width="100%" height="100%" fill="url(#pipes)"/>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-badge">84</div>
+    <div>
+      <div class="logo-text">Provision Plumbing</div>
+      <div class="logo-sub">Gulf Shores, AL · LLC</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:2517097180">(251) 709-7180</a>
+    <button class="nav-cta" onclick="scrollToForm()">Get Help Now</button>
+  </div>
+  <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+  <div class="mobile-menu" id="mobMenu">
+    <a href="#services" class="mlink">Services</a>
+    <a href="#about" class="mlink">About</a>
+    <a href="#reviews" class="mlink">Reviews</a>
+    <a href="#contact" class="mlink">Contact</a>
+    <a class="mob-phone" href="tel:2517097180">📞 (251) 709-7180</a>
+    <button class="mob-cta" onclick="scrollToForm()">Get Help Now</button>
+  </div>
+</nav>
+
+<!-- URGENCY STRIP -->
+<div class="urgency-strip">
+  <span class="up">Responding Today</span>
+  <span>Typical response: <strong>under 2 hours</strong></span>
+  <span>·</span>
+  <span><strong>Mon–Sat</strong> 8:00 AM – 4:00 PM</span>
+  <span>·</span>
+  <span>📞 <strong><a href="tel:2517097180" style="color:#fff;text-decoration:none;">(251) 709-7180</a></strong></span>
+  <span class="up">Free Estimates</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">★ Ranked #84 · Gulf Shores Plumbers · Est. 2022</div>
+      <span class="hero-num">84</span>
+      <h1 class="hero-title">Gulf Shores'<br><span>Trusted</span> Plumber</h1>
+
+      <div class="pain-points">
+        <div class="pain-item"><div class="pain-icon">💧</div><span>Burst pipe or major leak?</span><span class="pain-arrow">We're there fast →</span></div>
+        <div class="pain-item"><div class="pain-icon">🔥</div><span>Hot water heater went out?</span><span class="pain-arrow">Same/next-day fix →</span></div>
+        <div class="pain-item"><div class="pain-icon">🚽</div><span>Clogged drain or broken toilet?</span><span class="pain-arrow">Call James →</span></div>
+        <div class="pain-item"><div class="pain-icon">⚙️</div><span>Repiping or faucet replacement?</span><span class="pain-arrow">Free estimate →</span></div>
+      </div>
+
+      <div class="response-promise">
+        <span class="rp-icon">⚡</span>
+        <div class="rp-text">
+          <strong>We respond in under 2 hours — guaranteed</strong>
+          <span>James even troubleshoots for free over the phone before you spend a dime</span>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust-item"><span>⭐</span><strong>4.7</strong><span>/5 HomeAdvisor</span></div>
+        <div class="trust-dot"></div>
+        <div class="trust-item"><strong>100%</strong><span>recommend on Facebook</span></div>
+        <div class="trust-dot"></div>
+        <div class="trust-item"><strong>A+</strong><span>BBB Rating</span></div>
+        <div class="trust-dot"></div>
+        <div class="trust-item"><strong>Licensed</strong><span>& Insured</span></div>
+      </div>
+
+      <div class="hero-phone">
+        <a class="phone-link" href="tel:2517097180">(251) 709-7180</a>
+        <div class="phone-sub">Call or text James directly<br>Gulf Shores, AL 36542</div>
+      </div>
+    </div>
+
+    <!-- LEAD CAPTURE FORM -->
+    <div class="lead-card" id="leadForm">
+      <h3>Get Help Today</h3>
+      <p class="lead-sub">We'll call you back in <strong>under 2 hours</strong>. Free estimate, no obligation.</p>
+      <div class="lfgroup">
+        <label>Your Name</label>
+        <input type="text" placeholder="John Smith" id="lf-name"/>
+      </div>
+      <div class="lfgroup">
+        <label>Best Phone Number</label>
+        <input type="tel" placeholder="(251) 555-0100" id="lf-phone"/>
+      </div>
+      <div class="lfgroup">
+        <label>What's the Problem?</label>
+        <select id="lf-service">
+          <option value="">Select the issue...</option>
+          <option>Burst pipe / Major leak</option>
+          <option>Water heater — out or leaking</option>
+          <option>Clogged drain</option>
+          <option>Toilet broken / won't flush</option>
+          <option>Faucet repair or replacement</option>
+          <option>Repiping</option>
+          <option>Grinder pump issue</option>
+          <option>Not sure — just need help</option>
+        </select>
+      </div>
+      <button class="lead-submit" id="leadSubmit">Call Me Back — Free Quote</button>
+      <p class="lead-form-note">No spam. James calls back personally, usually within 2 hours.</p>
+      <div class="lead-or">or call right now</div>
+      <a class="lead-call-btn" href="tel:2517097180">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        (251) 709-7180
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item"><span class="proof-stars">★★★★★</span><div class="proof-text"><strong>4.7/5</strong> on HomeAdvisor · 14 reviews</div></div>
+  <div class="proof-divider"></div>
+  <div class="proof-item"><span class="proof-stars">★★★★★</span><div class="proof-text"><strong>100%</strong> recommend on Facebook</div></div>
+  <div class="proof-divider"></div>
+  <div class="proof-item"><span class="proof-stars">★★★★★</span><div class="proof-text"><strong>5.0</strong> on Google · 5.0 on Yelp</div></div>
+  <div class="proof-divider"></div>
+  <div class="proof-item"><div class="proof-text"><strong>A+</strong> BBB · Licensed &amp; Insured · Warranties on all work</div></div>
+</div>
+
+<!-- REVIEWS (early — section 2) -->
+<section class="reviews" id="reviews">
+  <div class="section-header reveal">
+    <span class="eyebrow">Real Customer Reviews</span>
+    <div class="section-title">Don't Take Our Word for <span>It</span></div>
+    <p class="section-sub">Pulled directly from HomeAdvisor, Yelp, and Google — real customers, real words</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">LK</div><div><div class="rv-name">Linda K.</div><div class="rv-src">Yelp · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"They went above and beyond the expectations that I had. Extremely friendly and budget friendly. The service that I requested they promptly fixed and I would definitely recommend them again."</p>
+      <span class="rv-badge">Yelp · 5.0 ★</span>
+    </div>
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">GR</div><div><div class="rv-name">Google Reviewer</div><div class="rv-src">Google · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"My grinder pump stopped working. Called James and he was out in an hour to fix the issue. Luckily the pump didn't have to be replaced, just the check valve and connecting pipes. Would highly recommend!"</p>
+      <span class="rv-badge">Google · 5.0 ★</span>
+    </div>
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">HA</div><div><div class="rv-name">Verified Customer</div><div class="rv-src">HomeAdvisor · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"James even offered to help me troubleshoot before having to pay for him to come out. He came the next day, did an incredibly professional job, was super friendly, and had very fair pricing. I would trust James with any plumbing job."</p>
+      <span class="rv-badge">HomeAdvisor · Verified</span>
+    </div>
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">EW</div><div><div class="rv-name">Easter Weekend Customer</div><div class="rv-src">HomeAdvisor · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"They called me back on Easter Sunday, scheduled for Monday, communicated well, quick work, saved the day! We had a leak and the water was turned off. They fixed it in 15 minutes, and the price reflected that."</p>
+      <span class="rv-badge">HomeAdvisor · Verified</span>
+    </div>
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">MS</div><div><div class="rv-name">Michael S.</div><div class="rv-src">HomeAdvisor · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"Jim (owner) — knowledgeable, professional. I will use his services again."</p>
+      <span class="rv-badge">HomeAdvisor · Verified</span>
+    </div>
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">PP</div><div><div class="rv-name">Verified Customer</div><div class="rv-src">HomeAdvisor · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"Repair man was pleasant and kept the cost to the penny for the installation. Knowledgeable, friendly, and professional. Highly recommended. Will hire for future projects."</p>
+      <span class="rv-badge">HomeAdvisor · Verified</span>
+    </div>
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">RC</div><div><div class="rv-name">Repeat Customer</div><div class="rv-src">HomeAdvisor · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"Answered all my questions. He did another plumbing fix while he was here. Personable young man. I will hire again for future work."</p>
+      <span class="rv-badge">HomeAdvisor · Verified</span>
+    </div>
+    <div class="review-card reveal">
+      <div class="rv-top"><div class="rv-info"><div class="rv-av">JH</div><div><div class="rv-name">Verified Customer</div><div class="rv-src">HomeAdvisor · Verified</div></div></div><div class="rv-stars">★★★★★</div></div>
+      <p class="rv-text">"James is a qualified plumber who is a good worker, very clean. Will hire him again."</p>
+      <span class="rv-badge">HomeAdvisor · Verified</span>
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<div class="inline-cta">
+  <div class="ict-left reveal">
+    <h3>Got a Plumbing Problem Right Now?</h3>
+    <p>Don't wait — James responds in under 2 hours. Free estimate, no obligation.</p>
+  </div>
+  <div class="ict-right reveal">
+    <a class="ict-phone" href="tel:2517097180">(251) 709-7180</a>
+    <button class="ict-btn" onclick="scrollToForm()">Request a Callback</button>
+  </div>
+</div>
+
+<!-- SERVICES (pain-point framing) -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <span class="eyebrow">Services</span>
+    <div class="section-title">Whatever the <span>Problem</span> — We Fix It</div>
+    <p class="section-sub">Serving Gulf Shores, Orange Beach, Foley, and all of Baldwin County</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card reveal"><div class="pc-problem">Emergency</div><div class="pc-title">Burst Pipe or Leak?</div><div class="pc-solution">Fast response to water leaks of any size. We'll stop the damage and fix it right — priced fairly for the work actually done.</div></div>
+    <div class="pain-card reveal"><div class="pc-problem">No Hot Water</div><div class="pc-title">Water Heater Out?</div><div class="pc-solution">Tank and tankless installation and repair. Emergency same/next-day water heater replacement available.</div></div>
+    <div class="pain-card reveal"><div class="pc-problem">Slow or Stopped</div><div class="pc-title">Drain Clogged?</div><div class="pc-solution">Kitchen, laundry, bathroom — thorough drain cleaning and diagnosis before any work begins. No guesswork charges.</div></div>
+    <div class="pain-card reveal"><div class="pc-problem">Aging Plumbing</div><div class="pc-title">Time to Repipe?</div><div class="pc-solution">Full and partial repiping for older homes. Licensed, insured, and warrantied. Free estimate — James will be honest about what you actually need.</div></div>
+    <div class="pain-card reveal"><div class="pc-problem">Broken Fixture</div><div class="pc-title">Toilet Won't Flush?</div><div class="pc-solution">Toilet repair and replacement done cleanly with quality fixtures. No mess left behind.</div></div>
+    <div class="pain-card reveal"><div class="pc-problem">Leaking Faucet</div><div class="pc-title">Faucet Dripping?</div><div class="pc-solution">Kitchen, bath, outdoor — faucet repair and replacement at a price kept to the penny. No surprise charges ever.</div></div>
+    <div class="pain-card reveal"><div class="pc-problem">Pump Failure</div><div class="pc-title">Grinder Pump Down?</div><div class="pc-solution">Out in an hour for pump calls. Honest diagnosis — one customer's pump was saved without a full replacement.</div></div>
+    <div class="pain-card reveal"><div class="pc-problem">Not Sure?</div><div class="pc-title">Call First — It's Free</div><div class="pc-solution">James troubleshoots over the phone at no charge before you ever commit to a visit. No pressure, ever.</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about">
+    <div class="about-text reveal">
+      <span class="eyebrow">About Provision Plumbing</span>
+      <h2>Small Business. <span>Owner on Every Job.</span></h2>
+      <p>Founded in January 2022 by licensed plumber James N., Provision Plumbing LLC was built on a simple idea: Gulf Shores deserves a plumber who actually shows up, picks up the phone, and charges a fair price.</p>
+      <p>When you call Provision, you get James — not a dispatcher, not a sub. He'll troubleshoot your problem for free over the phone, give you an honest estimate, and do the work himself.</p>
+      <div class="aline"></div>
+      <div class="fact-grid">
+        <div class="fact-box"><div class="fact-num">2022</div><div class="fact-desc">Founded Gulf Shores</div></div>
+        <div class="fact-box"><div class="fact-num">A+</div><div class="fact-desc">BBB Rating</div></div>
+        <div class="fact-box"><div class="fact-num">4.7★</div><div class="fact-desc">HomeAdvisor · 14 Reviews</div></div>
+        <div class="fact-box"><div class="fact-num">100%</div><div class="fact-desc">Facebook Recommend</div></div>
+      </div>
+    </div>
+    <div class="owner-card reveal">
+      <div class="owner-name">James N.</div>
+      <div class="owner-title">Owner · Licensed Plumber · Gulf Shores, AL</div>
+      <div class="owner-quote">"Service is our mission. We are a small plumbing business focusing on providing quality service."</div>
+      <div class="owner-detail">James handles every job personally. He's known for responding on Easter Sunday, troubleshooting for free over the phone, fixing leaks in 15 minutes, and charging exactly what he quotes. Customers don't just hire him once — they come back and refer their neighbors.</div>
+      <div class="owner-bottom">
+        <span class="stars">★★★★★</span>
+        <span class="stars-note">Licensed · Insured · Warranties on all work · Credit cards accepted</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Request a <span>Free Quote</span></h2>
+      <p>James typically responds within 2 hours. Free estimates always. Credit cards accepted. Warranties on all work.</p>
+      <div class="irow"><div class="iico">📍</div><div><div class="ilbl">Address</div><div class="ival">7108 Rocky Road Loop<br>Gulf Shores, AL 36542</div></div></div>
+      <div class="irow"><div class="iico">📞</div><div><div class="ilbl">Phone (Call or Text)</div><div class="ival"><a href="tel:2517097180">(251) 709-7180</a></div></div></div>
+      <div class="irow"><div class="iico">✉</div><div><div class="ilbl">Email</div><div class="ival"><a href="mailto:provisionplumbingsvc@gmail.com">provisionplumbingsvc@gmail.com</a></div></div></div>
+      <div class="irow"><div class="iico">🕐</div>
+        <div><div class="ilbl">Hours</div>
+          <div class="ival">
+            <div class="hour-row"><span>Mon – Fri</span><strong>8:00 AM – 4:00 PM</strong></div>
+            <div class="hour-row"><span>Saturday</span><strong>8:00 AM – 4:00 PM</strong></div>
+            <div class="hour-row"><span>Sunday</span><strong>Closed</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-box reveal" id="contactFormBox">
+      <h3>Request a Callback</h3>
+      <p class="cf-sub">3 fields, 30 seconds. James calls you back personally.</p>
+      <div class="cfgroup"><label>Your Name</label><input type="text" placeholder="John Smith" id="cf-name"/></div>
+      <div class="cfgroup"><label>Best Phone Number</label><input type="tel" placeholder="(251) 555-0100" id="cf-phone"/></div>
+      <div class="cfgroup"><label>What's Going On?</label>
+        <select id="cf-service">
+          <option value="">Select the issue...</option>
+          <option>Burst pipe / Major leak</option>
+          <option>Water heater — out or leaking</option>
+          <option>Clogged drain</option>
+          <option>Toilet broken / won't flush</option>
+          <option>Faucet repair or replacement</option>
+          <option>Repiping</option>
+          <option>Grinder pump issue</option>
+          <option>Not sure — just need help</option>
+        </select>
+      </div>
+      <div class="cfgroup"><label>Any Details? (optional)</label><textarea rows="3" placeholder="What's happening, where it is, how urgent..."></textarea></div>
+      <button class="cf-submit" id="cfSubmit">Send — James Will Call You Back</button>
+      <p class="cf-note">Free estimate · No obligation · Responds within 2 hours · Licensed & Insured</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <h2 class="reveal">Need a Plumber <span>Right Now?</span></h2>
+  <p class="reveal">Call or text James directly — fast, fair, done right.</p>
+  <a class="footer-cta-phone reveal" href="tel:2517097180">(251) 709-7180</a>
+  <button class="btn-primary reveal" onclick="scrollToForm()" style="background:var(--teal);color:#fff;border:none;cursor:pointer;padding:.9rem 2rem;border-radius:3px;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:all .2s;">Or Request a Callback Online</button>
+</div>
+
+<footer>
+  <div class="footer-brand">Provision Plumbing LLC<small>7108 Rocky Road Loop · Gulf Shores, AL 36542</small></div>
+  <div class="footer-center">© 2025 Provision Plumbing LLC · Licensed · Insured<br>BBB A+ · Est. January 2022 · Ranked #84</div>
+  <div class="footer-right"><a href="tel:2517097180">(251) 709-7180</a><br>provisionplumbingsvc@gmail.com<br><a href="https://www.facebook.com/ProvisionPlumbingLLC/" target="_blank">Facebook</a></div>
+</footer>
+
+<div class="toast" id="toast">✓ Sent! James will call you back within 2 hours.</div>
+
+<script>
+/* Hamburger */
+const ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+document.querySelectorAll('.mlink,.mob-cta').forEach(el=>el.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');}));
+
+/* Scroll reveal */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Sticky call bar — show after hero */
+const callBar=document.getElementById('callBar');
+const heroEl=document.querySelector('.hero');
+const barObs=new IntersectionObserver(([e])=>{callBar.classList.toggle('visible',!e.isIntersecting);},{threshold:0.1});
+barObs.observe(heroEl);
+
+/* Call bar quote button */
+document.getElementById('callBarQuote').addEventListener('click',()=>scrollToForm());
+
+/* Scroll to form */
+function scrollToForm(){
+  const f=document.getElementById('leadForm');
+  f.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>document.getElementById('lf-name').focus(),600);
+}
+
+/* Toast */
+function showToast(){
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),4500);
+}
+document.getElementById('leadSubmit').addEventListener('click',showToast);
+document.getElementById('cfSubmit').addEventListener('click',showToast);
+</script>
+</body>
+</html>
